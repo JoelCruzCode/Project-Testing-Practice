@@ -55,11 +55,13 @@ function caesarCipher(string, shiftNum) {
 }
 
 function analyzeArray(array) {
+  if (!Array.isArray(array)) {
+    return "Not an array";
+  }
   const length = array.length;
 
   if (length === 0) {
-    console.log("Array is empty");
-    return;
+    return "Array is empty";
   }
   let total = 0;
   let min = array[0];
@@ -67,12 +69,14 @@ function analyzeArray(array) {
   let average;
 
   for (let num of array) {
+    if (typeof num !== "number") {
+      return "Array is non-numeric";
+    }
     total += num;
     min = num < min ? num : min;
     max = num > max ? num : max;
   }
   average = total / length;
-
   return { average, min, max, length };
 }
 

@@ -68,3 +68,13 @@ test("All object properties should be equal to the comparison object", () => {
   const object = analyzeArray([1, 8, 3, 4, 2, 6]);
   expect(object).toEqual(comparisonObject);
 });
+
+test("array with non-numeric", () => {
+  const object = analyzeArray([1, 8, 3, 4, 2, "6"]);
+  expect(object).toEqual("Array is non-numeric");
+});
+
+test("not an array", () => {
+  const object = analyzeArray("183426");
+  expect(object).toEqual("Not an array");
+});
